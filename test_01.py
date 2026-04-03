@@ -15,45 +15,57 @@ def main():
 
     divisor_count = len(divisors)
     divisor_sum = sum(divisors)
-    divisors_sorted = sorted(divisors)
-    second_largest = divisors_sorted[-2]
+    second_largest = sorted(divisors)[-2]
 
     while True:
-        user_input = input("Add 혹은 Answer를 입력하세요 (종료: quit): ")
+        mode = input("Add 혹은 Answer를 입력하세요 (종료: quit): ")
 
-        if user_input == "quit":
+        if mode == "quit":
             break
 
-        elif user_input == "Answer":
+        if mode == "Answer":
             print(divisor_count)
             print(divisor_sum)
             print(second_largest)
 
-            guess = int(input())
+            while True:
+                user = input()
 
-            if guess == num:
-                print("true")
-                break
-            else:
-                print("false")
-                if guess < num:
-                    print("up")
+                if user == "quit":
+                    return
+
+                guess = int(user)
+
+                if guess == num:
+                    print("true")
+                    return
                 else:
-                    print("down")
+                    print("false")
+                    if guess < num:
+                        print("up")
+                    else:
+                        print("down")
 
-        elif user_input == "Add":
+        elif mode == "Add":
             print(num)
-            user_sum = int(input())
 
-            if user_sum == divisor_sum:
-                print("true")
-                break
-            else:
-                print("false")
-                if user_sum < divisor_sum:
-                    print("up")
+            while True:
+                user = input()
+
+                if user == "quit":
+                    return
+
+                user_sum = int(user)
+
+                if user_sum == divisor_sum:
+                    print("true")
+                    return
                 else:
-                    print("down")
+                    print("false")
+                    if user_sum < divisor_sum:
+                        print("up")
+                    else:
+                        print("down")
 
         else:
             print("잘못된 입력입니다.")
